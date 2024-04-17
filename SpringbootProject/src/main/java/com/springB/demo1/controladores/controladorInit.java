@@ -10,6 +10,7 @@ import com.springB.demo1.modelo.Usuario;
 import com.springB.demo1.dao.IUsuarioCrud;
 import com.springB.demo1.servicio.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.Errors;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,7 +47,9 @@ public class controladorInit {
     }
     
     @PostMapping("/agregar")
-    public String guardar (Usuario usuario){
+    public String guardar (@Valid Usuario usuario, Errors errores){
+        if(errores.hasErrors()){return "modificar";}
+        
         userServicio.guardar(usuario);
     return "redirect:/";
     }
