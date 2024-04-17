@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
+        <header th:replace="plantillas/partes :: cabecero"></header>
         <h2>pagina de Inicio</h2>
         <a th:href="@{/agregar}" >agregar Esuario</a>
         <p th:text="${mensaje}"></p>
@@ -41,6 +42,7 @@
         <div th:if="${usuarios == null or usaurios.empty}">
             lalista de usuarios esta vacia 
         </div>
+        <footer th:replace="plantillas/partes :: pies"></footer>
     </body>
 </html>
 
