@@ -26,6 +26,7 @@
                     <th>Nombre:</th>
                     <th>Email:</th>
                     <th>EDITAR:</th>
+                    <th>Eliminar:</th>
                 </tr>
                 <tr th:each="u: ${usurios}">
                     <td th:text="${u.cedula}"></td>
@@ -33,6 +34,7 @@
                     <td th:text="${u.nombre}"></td>
                     <td th:text="${u.email}"></td>
                     <td><a th:href="@{/editar/}+${u.cedula}" th:text="EDITAR"></a></td>
+                    <td><a th:href="@{/eliminar(cedula=${u.cedula})}" th:text="Eliminar"></a></td>
                 </tr>
             </table>
         </div>

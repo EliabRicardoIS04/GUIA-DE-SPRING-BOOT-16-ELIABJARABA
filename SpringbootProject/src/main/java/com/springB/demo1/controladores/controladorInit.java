@@ -51,12 +51,20 @@ public class controladorInit {
     return "redirect:/";
     }
     
-     @GetMapping("/agregar")
+     @GetMapping("/editar/{cedula}")
     public String editar (Usuario usuario, Model modelo){
         log.info("Invocando el metodo EDITAR");
         usuario = userServicio.buscar(usuario);
         modelo.addAttribute("usuario",usuario);
     return "modificar";
+    }
+    
+    @GetMapping("/eliminar")
+    public String eliminar (Usuario usuario, Model modelo){
+        
+      userServicio.eliminar(usuario);
+       
+    return "redirect:/";
     }
     
 }
