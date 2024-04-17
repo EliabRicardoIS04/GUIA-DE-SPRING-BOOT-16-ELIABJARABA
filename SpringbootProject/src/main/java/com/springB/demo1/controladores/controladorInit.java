@@ -12,6 +12,7 @@ import com.springB.demo1.servicio.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
 
  ;
 
@@ -32,5 +33,21 @@ public class controladorInit {
         modelo.addAttribute("usuarios", listaUsuario );
         log.info("este programa se esta ejecutando");
         return "index";
+    }
+
+    /**
+     *
+     * @param usuario
+     * @return
+     */
+    @GetMapping("/agregar")
+    public String agregar(Usuario usuario){
+    return "modificar";
+    }
+    
+    @PostMapping("/agregar")
+    public String guardar (Usuario usuario){
+        userServicio.guardar(usuario);
+    return "redirect:/";
     }
 }
