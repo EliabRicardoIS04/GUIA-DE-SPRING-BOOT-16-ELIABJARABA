@@ -11,9 +11,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Datos del Usuario</h1>
+        <h1>[[#{usuario.formulario}]]</h1>
 
-        <a th:href="@(/)">REGRESAR</a>
+        <a th:href="@(/)">[[#{enlace regresar}]]</a>
         <br/>
 
         <form th:action="@(/guardar)" method="POST" th:object="$(usuario) ">
@@ -21,21 +21,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <br/>
             <label for="cedula">CEDULA: </label>
             <br/>
-            <input type="text" name="cedula" th:field="* (cedula)" required />
+            <input type="text" name="cedula" th:field="#{usuario.cedula}" required />
             <span th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}">la cedula es requerida</spam>
             <label for="clave">CLAVE: </label>
-           <input type="password" name="clave" th: field="* (clave)" />
+           <input type="password" name="clave" th: field="#{usuario.clave}" />
            <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">la cedula es requerida</spam>
             <label for="nombre">NOMBRE:</label>
-            <input type="text" name="nombre" th:field-"*(nombre)" required />
+            <input type="text" name="nombre" th:field="#{usuario.nombre}" required />
             <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">la cedula es requerida</spam>
             <br/>
             <label for="email">EMAIL: </label>
-            <input type="email" name="email" th: field-"*(email)" />
+            <input type="email" name="email" th: field="#{usuario.email}" />
             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">la cedula es requerida</spam>
             <br/>
-            <input type-"reset" value="LIMPIAR"/> &nbsp;&nbsp;&nbsp;
-            <input type ="submit" name="guardar" value="Guardar">
+            <input type-"reset" th:value="#{accion.reiniciar}"/> &nbsp;&nbsp;&nbsp;
+            <input type ="submit" name="guardar" th:value="#accion.agregar">
         </fomr>
 </body>
 </html>
