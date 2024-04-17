@@ -47,7 +47,7 @@ public class controladorInit {
     }
     
     @PostMapping("/agregar")
-    public String guardar (@Valid Usuario usuario, Errors errores){
+    public String guardar ( Usuario usuario, Errors errores){
         if(errores.hasErrors()){return "modificar";}
         
         userServicio.guardar(usuario);
