@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.springB.demo1.modelo.Usuario;
 import com.springB.demo1.dao.IUsuarioCrud;
+import com.springB.demo1.servicio.IUsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class controladorInit {
     
    @Autowired
-   IUsuarioCrud crudUsuario;
+   IUsuarioServicio userServicio;
     
     @GetMapping("/")
     public String inicio(Model modelo){
@@ -27,7 +28,7 @@ public class controladorInit {
         modelo.addAttribute("mensaje",mensaje);
       
        
-        List<Usuario> listaUsuario = (List<Usuario>) crudUsuario.findAll();
+        List<Usuario> listaUsuario = (List<Usuario>) userServicio.listarUsuario();
         modelo.addAttribute("usuarios", listaUsuario );
         log.info("este programa se esta ejecutando");
         return "index";
